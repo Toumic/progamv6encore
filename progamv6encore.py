@@ -1,4 +1,4 @@
-# !/usr/bin/env python 3.5
+# !/usr/bin/env python 3.10
 # -*- coding: utf-8 -*-
 # * Mercredi 18 mai 2022 à 12 h 00 mn
 # Application gammique évolutive
