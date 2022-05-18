@@ -1,6 +1,6 @@
 # !/usr/bin/env python 3.5
 # -*- coding: utf-8 -*-
-# * Vendredi 5 octobre 2016 à 12h57mn
+# * Mercredi 18 mai 2022 à 12 h 00 mn
 # Application gammique évolutive
 # Operate Envol sysTM
 # ProgamV6encore 1.0
