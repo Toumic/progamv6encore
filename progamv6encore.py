@@ -1,6 +1,6 @@
 # !/usr/bin/env python 3.10
+# * Mercredi 18 mai 2022.
 # -*- coding: utf-8 -*-
-# * Mercredi 18 mai 2022 à 12 h 00 mn
 # Application gammique évolutive
 # Operate Envol sysTM
 # ProgamV6encore 1.0
@@ -78,7 +78,7 @@ class Gammique(Tk):
         # self.fichacc = les noms des fichiers audio_accords (communs)
         self.acc = None
         self.accdiese = ['', '+', 'x', '^', '+^', 'x^', '^^']  # Tableaux des accords - altérations
-        self.accbemol = ['', '**', '°*', '-*', '*', '°', '-']  # Tableaux des accords - altérations
+        self.accbemol = ['', '**', 'o*', '-*', '*', 'o', '-']  # Tableaux des accords - altérations
         # self.fichacc : Ces fichiers vont être écrits sur votre disque dur
         self.fichacc = ['acc1.wav', 'acc2.wav', 'acc3.wav', 'acc4.wav', 'acc5.wav', 'acc6.wav', 'acc7.wav']
         self.btacc = Button(self.cad, text='Accords', width=15, bg='light blue', command=self.accord)
@@ -516,8 +516,8 @@ class Gammique(Tk):
                     co_tbmod[co].append(co_tbplns)
                 self.co_tbgen[ci].append(co_tbmod)
                 self.co_tbval[ci].append(co_tbdif)
-            # print('iii', ci, self.co_tbgen[ci])
-            # print('iii', ci, self.co_tbval[ci])
+            # print('\n\n__co_tbgen', ci, self.co_tbgen[ci])
+            # print('520\n\n__co_tbval', ci, self.co_tbval[ci])
         c_oo.append(self.co_tbgen)
         c_pp.append(self.co_tbval)
         # cob2 = self.co_tbval
@@ -2411,15 +2411,8 @@ class Gammique(Tk):
                   [1, 1, 0, 0, 0, 3, 0], [3, 0, 0, 0, 0, 2, 0]]
         self.gammescopie = gammes
         # Tonice(0). Tonale(1:3). Mélode(4:14). Médiane(15:18). Domine(19:42). Harmone(43:65)
-        gamnoms = ['0', '-2', '+2', '^2', '-3', '-23', '-34x', '+34', '+23x', '-34', 'x3', '°3', '+34x', '°34x',
-                   '^3',
-                   '-4', '-24', '^4', '°4', '-5', '-25', '-25+', '+25-', '-35', '-35+', '+45x', '+25x', '°35-',
-                   '+35x',
-                   '-45+', '-45', 'x5', 'x45+', '-25°', '-35°', '-45°', '°45-', '°5', '°35+', '*5', '°35x',
-                   '-45x',
-                   '°45x', '-6', '+6', '-26', '-26+', '+26-', '+26', '-36', '-36+', '-56', '-56+', '+56',
-                   'x46+',
-                   '-26°', '-46+', '-46°', 'x36+', '-56°', '°46-', '°36+', '*6', '°46+', '°6', 'x26-']
+        gamnoms = ['0', '-2', '+2', '^2', '-3', '-23', '-34x', '+34', '+23x', '-34', 'x3', 'o3', '+34x', 'o34x',
+                   '^3', '-4', '-24', '^4', 'o4', '-5', '-25', '-25+', '+25-', '-35', '-35+', '+45x', '+25x', 'o35-', '+35x', '-45+', '-45', 'x5', 'x45+', '-25o', '-35o', '-45o', 'o45-', 'o5', 'o35+', '*5', 'o35x', '-45x', '°45x', '-6', '+6', '-26', '-26+', '+26-', '+26', '-36', '-36+', '-56', '-56+', '+56', 'x46+', '-26o', '-46+', '-46o', 'x36+', '-56o', 'o46-', 'o36+', '*6', 'o46+', 'o6', 'x26-']
         self.gamnomscopie = gamnoms
 
         # Récupération des notes cursives
@@ -2547,13 +2540,11 @@ class Gammique(Tk):
         cnat = ['', '', '', '', '', '', '']
         # Niveaux d'altérations
         self.nordiese = ['', '+', 'x', '^', '+^', 'x^', '^^', '+^^', 'x^^', '^^^', '+^^^', 'x^^^', '^^^^',
-                         '13(#)', '14(#)', '15(#)',
-                         '16(#)', '17(#)', '18(#)', '19(#)', '20(#)', '21(#)', '22(#)', '23(#)', '24(#)',
-                         '25(#)', '26(#)', '27(#)', '28(#)', '29(#)', '30(#)', '31(#)', '32(#)']
+                         '13(#)', '14(#)', '15(#)', '16(#)', '17(#)', '18(#)', '19(#)', '20(#)', '21(#)', '22(#)', '23(#)', '24(#)', '25(#)', '26(#)', '27(#)', '28(#)', '29(#)', '30(#)', '31(#)', '32(#)']
         self.subemol = ['', '32(b)', '31(b)', '30(b)', '29(b)', '28(b)', '27(b)', '26(b)', '25(b)', '24(b)',
                         '23(b)', '22(b)',
                         '21(b)', '20(b)', '19(b)', '18(b)', '17(b)', '16(b)', '15(b)', '14(b)', '13(b)',
-                        '****', '°***', '-***', '***', '°**', '-**', '**', '°*', '-*', '*', '°', '-']
+                        '****', 'o***', '-***', '***', 'o**', '-**', '**', 'o*', '-*', '*', 'o', '-']
         # Configuration modale
         gdeg = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']
         # Définition du style d'écriture
@@ -2658,7 +2649,15 @@ class Commatique(Frame):
         self.f_bv = Font(family='Arial', size=6)
 
     def brnch_1(self, c_oo, c_pp, c_ii):
+        """Réception des gammes calculées :
+            c_oo = Modes diatoniques calculés + Chromes (sup/inf)
+            c_pp =
+            c_ii =
+        """
         # c_oo c_pp c_cc de class Gammique.comma.co_tbval()..
+        # print('2664-brnch_1-c_oo', c_oo[0], '\n\n\nc_pp', c_pp[0], '\n\n\nc_ii', c_ii[0])
+        # print('2665-brnch_1-c_oo', type(c_oo), c_oo[0][0][0][0])
+        # print('2665-brnch_1-c_pp', type(c_pp), c_pp[0][0][0])
         if self.ctpier is not None:
             self.ctpier.destroy()
         self.ctpier = Toplevel(self)
@@ -2681,7 +2680,7 @@ class Commatique(Frame):
         self.ccnbase.pack()  # ccnbase = Premier Canvas original (pack_forget ou pas)
         self.ccnbase.delete(ALL)
         c_x, c_y, c_z = 30, 60, 0
-        c_ii2 = 'Chrome en cours ' + str(c_ii)
+        c_ii2 = "{}{}".format('Chrome en cours ', str(c_ii))
         self.ccnbase.create_text(112, 8, font=self.f_bt, text=c_ii2, fill='blue')
         for i in range(12):
             c_i = i * 40
@@ -2722,14 +2721,17 @@ class Commatique(Frame):
             c_valo = self.coo_valone[i], self.coo_valpos[i][0][0]
             self.ctb_finv[i].append(c_valo)  # 0 0 self.ctb_finv[i] [([(0, 'C')], 'g')]
             c_formi2n = self.ctb_form[i2n]  # 0 0 c_form ('', 1) | 0 1 c_form ('+', 1)...
+            print('2724-i2n', i2n, 'i ', i)
             for j in range(12):
                 c_form[0] = c_formi2n[0][j]
                 c_finv[0] = self.ctb_finv[i]
                 cfi_ggg = c_finv[0][0][1]
+                print('2729-cfi_ggg', cfi_ggg)
                 if j == 0:
                     if i == 0:
                         # Enregistrement self.coo_gym[]
                         cfi_org.append(c_formi2n)  # "i" = "j" = nul
+                        print('2734-cfi_org', cfi_org, i2n)
                         cfi_y = c_finv[0][0][0][0][1]  # cfi_not 0 0 C (cfi_not[0])
                         c_cfy = -1
                         c_yy = 0
@@ -2746,10 +2748,11 @@ class Commatique(Frame):
                                         c_cfy += 1
                                         self.coo_gym[c_cfy] = self.coo_gam[cy_]
                     if cfi_ggg == 'g':
-                        cfi_ng0 = cfi_org[0][0][i][1]
+                        print('2751-*****1', cfi_org[0][0][i], i)
+                        cfi_ng0 = cfi_org[0][0][i]
                         cfi_alt[0] = c_finv[0][0][0][0][0]  # cfi_alt 0 0 [(0, 'C')]
                         cfi_not[0] = cfi_ng0, c_finv[0][0][0][0][1]  # cfi_not 0 0 C
-                        # print('*****1')
+                        print('*****1')
                     else:
                         cfi_n10 = c_finv[0][0][0][0][1][1]  # cfi_n10 0 0 D
                         cfi_n20 = c_finv[0][0][0][0][0][1]  # cfi_n20 0 0 C
@@ -2764,12 +2767,12 @@ class Commatique(Frame):
                         cfi_n1 = c_finv[0][0][0][0][1][1]
                         cfi_n2 = c_finv[0][0][0][0][0][1]
                         cfi_not[0] = c_yn1, cfi_n1, c_yn2, cfi_n2
-                        # print('*****2')
-                    # print('cy', '/', i, j, "c_finv's ", cfi_ggg, '/', cfi_alt[0], '/', cfi_not[0])
+                        print('*****2')
+                    print('cy', '/', i, j, "c_finv's ", cfi_ggg, '/', cfi_alt[0], '/', cfi_not[0])
                     # print('ctb_form', i, self.ctb_form[i])
                 else:
                     pass
-                # print('1er mode ctb_finv', self.ctb_finv)
+                print('1er mode ctb_finv', self.ctb_finv)
 
 
 # class Gammique
