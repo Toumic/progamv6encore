@@ -1446,7 +1446,7 @@ class Gammique(Tk):
         for c in range(5):
             ch_c = chr_chrom[c]
             c_ch = ch_c - (ch_c * 2)
-            if ch_chrdies[c] is '0':
+            if ch_chrdies[c] == '0':
                 c20 = c2_o = -1
                 for c_a2 in chnat_aug:
                     if c20 < 0:
@@ -1478,7 +1478,7 @@ class Gammique(Tk):
                 c3_0 = c_noe1
                 # c4_0 = c_mj
                 ch_chrdies[c] = c_ch, c_a, c2_0, c3_0, 'plum', c_mj
-            if ch_chrbem[c] is '0':
+            if ch_chrbem[c] == '0':
                 c20 = c2_o = -1
                 for c_a2 in chnat_min:
                     if c20 < 0:
