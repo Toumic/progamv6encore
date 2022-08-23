@@ -210,6 +210,7 @@ class Gammique(Tk):
         self.dechire = {}  # Base avec l'indice adapté aux tableaux(b/#)
         self.btgama = Button(self, text='gamme', width=25, command=self.gama)
         self.btgama.pack_forget()  # Pantomime
+        self.btgama.invoke()
 
     # Section com
     def comma(self):
@@ -2223,8 +2224,10 @@ class Gammique(Tk):
         do = int(xc)
         xsi = self.sca[6].get()
         xre = self.sca[1].get()
-        if do < xsi: self.sca[6].set(do)
-        if do > xre + 1: self.sca[1].set(do - 1)
+        if do < xsi:
+            self.sca[6].set(do)
+        if do > xre + 1:
+            self.sca[1].set(do - 1)
         # Initialise sca[7](from_)
         xxrad = self.variable.get()
         if xxrad == "YOI":
@@ -2239,43 +2242,60 @@ class Gammique(Tk):
         ren = int(xd)
         xdo = self.sca[0].get()
         xmi = self.sca[2].get()
-        if ren < xdo - 1: self.sca[0].set(ren + 1)
-        if ren > xmi + 1: self.sca[2].set(ren - 1)
+        if ren < xdo - 1:
+            self.sca[0].set(ren + 1)
+        if ren > xmi + 1:
+            self.sca[2].set(ren - 1)
+        self.btgama.invoke()
 
     def scanote3(self, xe):
         mi = int(xe)
         xre = self.sca[1].get()
         xfa = self.sca[3].get()
-        if mi < xre - 1: self.sca[1].set(mi + 1)
-        if mi > xfa: self.sca[3].set(mi)
+        if mi < xre - 1:
+            self.sca[1].set(mi + 1)
+        if mi > xfa:
+            self.sca[3].set(mi)
+        self.btgama.invoke()
 
     def scanote4(self, xf):
         fa = int(xf)
         xmi = self.sca[2].get()
         xsol = self.sca[4].get()
-        if fa < xmi: self.sca[2].set(fa)
-        if fa > xsol + 1: self.sca[4].set(fa - 1)
+        if fa < xmi:
+            self.sca[2].set(fa)
+        if fa > xsol + 1:
+            self.sca[4].set(fa - 1)
+        self.btgama.invoke()
 
     def scanote5(self, xg):
         sol = int(xg)
         xfa = self.sca[3].get()
         xla = self.sca[5].get()
-        if sol < xfa - 1: self.sca[3].set(sol + 1)
-        if sol > xla + 1: self.sca[5].set(sol - 1)
+        if sol < xfa - 1:
+            self.sca[3].set(sol + 1)
+        if sol > xla + 1:
+            self.sca[5].set(sol - 1)
+        self.btgama.invoke()
 
     def scanote6(self, xa):
         la = int(xa)
         xsol = self.sca[4].get()
         xsi = self.sca[6].get()
-        if la < xsol - 1: self.sca[4].set(la + 1)
-        if la > xsi + 1: self.sca[6].set(la - 1)
+        if la < xsol - 1:
+            self.sca[4].set(la + 1)
+        if la > xsi + 1:
+            self.sca[6].set(la - 1)
+        self.btgama.invoke()
 
     def scanote7(self, xb):
         si = int(xb)
         xla = self.sca[5].get()
         xdo = self.sca[0].get()
-        if si < xla - 1: self.sca[5].set(si + 1)
-        if si > xdo: self.sca[0].set(si)
+        if si < xla - 1:
+            self.sca[5].set(si + 1)
+        if si > xdo:
+            self.sca[0].set(si)
         # Initialise sca[7](from_)
         xxxrad = self.variable.get()
         if xxxrad == "YOI":
@@ -2284,6 +2304,7 @@ class Gammique(Tk):
             self.sca[7].configure(from_=-12 - xdo, to=12 - si)
         elif xxxrad == "IOY":
             self.sca[7].configure(from_=-24 - xdo, to=0 - si)
+        self.btgama.invoke()
 
     def scanote8(self, xh):
         sch = int(xh)
